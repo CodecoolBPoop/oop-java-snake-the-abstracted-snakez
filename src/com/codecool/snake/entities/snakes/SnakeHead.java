@@ -17,6 +17,10 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
+
+        Globals.hud.health(health);
+        Globals.hud.score(Globals.score);
+
         setX(xc);
         setY(yc);
         health = 100;
