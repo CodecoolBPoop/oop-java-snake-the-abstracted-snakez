@@ -6,7 +6,15 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 
-public class Game extends Pane {
+import javax.swing.*;
+import java.awt.image.BufferedImage;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class Game extends Pane{
 
     public Game() {
         new SnakeHead(this, 500, 500);
