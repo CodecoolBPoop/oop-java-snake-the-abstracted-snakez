@@ -30,6 +30,7 @@ public class MenuBar {
         newMenuItem.setOnAction(e ->
         {
             primaryStage.hide();
+            new Server();
 
         });
 
@@ -37,7 +38,6 @@ public class MenuBar {
 
         menuBar.getMenus().addAll(fileMenu);
 
-        primaryStage.setTitle("Klondike Solitaire");
         primaryStage.setScene(scene);
         primaryStage.show();
 
