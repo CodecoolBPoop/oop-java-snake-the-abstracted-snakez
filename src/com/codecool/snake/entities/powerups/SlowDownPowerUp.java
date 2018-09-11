@@ -24,6 +24,7 @@ public class SlowDownPowerUp extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         if (!snakeHead.isSnakeTooSlow()) {
             snakeHead.changeSpeed(-0.33f);
+            snakeHead.addPart(1);
         }
         System.out.println("speed is:" + snakeHead.getSpeed());
         destroy();

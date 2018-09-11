@@ -24,6 +24,7 @@ public class HeartPowerUp extends GameEntity implements Interactable {
     public void apply(SnakeHead snakeHead) {
         if (!snakeHead.reachedMaxHealth()) {
             snakeHead.changeHealth(10);
+            snakeHead.addPart(1);
         }
         System.out.println("health is:" + snakeHead.getHealth());
         destroy();
