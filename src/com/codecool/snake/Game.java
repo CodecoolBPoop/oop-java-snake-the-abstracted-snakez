@@ -17,17 +17,17 @@ import java.util.Scanner;
 public class Game extends Pane{
 
     public Game() {
-        new SnakeHead(this, 500, 500);
+            new SnakeHead(this, 500, 500);
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
+            new SimpleEnemy(this);
+            new SimpleEnemy(this);
+            new SimpleEnemy(this);
+            new SimpleEnemy(this);
 
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
-        new SimplePowerup(this);
+            new SimplePowerup(this);
+            new SimplePowerup(this);
+            new SimplePowerup(this);
+            new SimplePowerup(this);
     }
 
     public void start() {
