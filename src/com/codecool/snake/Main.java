@@ -10,8 +10,16 @@ public class Main extends Application {
         launch(args);
     }
 
-    @Override
     public void start(Stage primaryStage) {
+        Game game = new Game();
+        MenuBar.addMenu(game, primaryStage);
+
+        primaryStage.setTitle("Snake Game");
+        primaryStage.show();
+        game.start();
+    }
+
+    public void startMulti(Stage primaryStage){
         Game game = new Game();
         MenuBar.addMenu(game, primaryStage);
 
