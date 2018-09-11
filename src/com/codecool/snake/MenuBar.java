@@ -30,7 +30,7 @@ public class MenuBar {
         newMenuItem.setOnAction(e ->
         {
             primaryStage.hide();
-            Server server = new Server();
+            new Server();
 
         });
 

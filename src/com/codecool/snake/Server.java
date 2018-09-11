@@ -1,9 +1,6 @@
 package com.codecool.snake;
 
-import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.awt.*;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,13 +11,9 @@ import java.util.Scanner;
 
 public class Server {
 
-    private static final int WIDTH = 1366;
-    private static final int HEIGHT = 768;
-
     private String ip = "localhost";
-    private int port = 222222;
+    private int port = 22222;
     private Scanner scanner = new Scanner(System.in);
-    private Thread thread;
 
     private Socket socket;
     private DataOutputStream dos;
@@ -28,8 +21,10 @@ public class Server {
 
     private ServerSocket serverSocket;
 
-    private boolean unableToCommunicateWithOpponent = false;
+    public static Stage primaryStage;
+
     private boolean accepted = false;
+    private boolean waitingForClient = true;
 
 
     public Server(){
@@ -41,24 +36,30 @@ public class Server {
             System.out.println("The port you entered was invalid!");
             port = scanner.nextInt();
         }
-        if (!connect()) initializeServer();
+        if (!connect()){
+            initializeServer();
+            start();
+        }
 
-        start();
-
-    }
-
-    public void start() {
-        while(true) {
-            if (accepted) {
-                Game game = new Game();
-                game.start();
-            } else {
-                listenForServerRequest();
-            }
+        if(accepted){
+            start();
         }
     }
 
-    private void listenForServerRequest(){
+    public void start() {
+        if (accepted) {
+            Game game = new Game();
+            MenuBar.addMenu(game, primaryStage);
+
+            primaryStage.setTitle("Snake Multiplayer");
+            primaryStage.show();
+            game.start();
+        }else{
+            listenForServerRequest();
+        }
+    }
+
+    private boolean listenForServerRequest(){
         Socket socket = null;
         try{
             socket = serverSocket.accept();
@@ -66,9 +67,11 @@ public class Server {
             dis = new DataInputStream(socket.getInputStream());
             accepted = true;
             System.out.println("Client has requested and joined the game");
+            return true;
         }catch(IOException e){
             e.printStackTrace();
         }
+        return false;
     }
 
     private boolean connect(){
