@@ -19,16 +19,18 @@ public class Game extends Pane{
     public Game() {
         new SnakeHead(this, 500, 500);
 
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
-        new SimpleEnemy(this);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
 
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
     }
+
+
 
     public void start() {
         Scene scene = getScene();
