@@ -14,6 +14,14 @@ public class Globals {
     public static final double WINDOW_WIDTH = 1000;
     public static final double WINDOW_HEIGHT = 700;
 
+
+    public static double SNAKE_HEAD_X = 500;
+    public static double SNAKE_HEAD_Y = 500;
+
+
+
+    public static final double SPAWN_DISTANCE_FROM_HERO = 50;
+
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
     public static Image simpleEnemy = new Image("simple_enemy.png");

@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
+    public static final boolean thisIsSnake = true;
     private static float speed = 2;
     private static final float turnRate = 2;
     private GameEntity tail; // the last element. Needed to know where to add the next part.
@@ -40,6 +41,8 @@ public class SnakeHead extends GameEntity implements Animatable {
         // set rotation and position
         setRotate(dir);
         Point2D heading = Utils.directionToVector(dir, speed);
+        Globals.SNAKE_HEAD_X = getX();
+        Globals.SNAKE_HEAD_Y = getY();
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
 

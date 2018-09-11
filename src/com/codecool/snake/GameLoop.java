@@ -7,12 +7,16 @@ import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SlowDownPowerUp;
 import com.codecool.snake.entities.powerups.SpeedPowerUp;
+import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
 public class GameLoop extends AnimationTimer {
+
+    public double snakeX;
+    public double snakeY;
 
     long framecounter = 0;
     private Pane game;
@@ -43,7 +47,6 @@ public class GameLoop extends AnimationTimer {
         }
         Globals.gameObjects.addAll(Globals.newGameObjects);
         Globals.newGameObjects.clear();
-
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
     }
