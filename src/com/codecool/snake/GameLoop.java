@@ -2,9 +2,13 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 
 public class GameLoop extends AnimationTimer {
+
+    public double snakeX;
+    public double snakeY;
 
     // This gets called every 1/60 seconds
     @Override
@@ -17,7 +21,6 @@ public class GameLoop extends AnimationTimer {
         }
         Globals.gameObjects.addAll(Globals.newGameObjects);
         Globals.newGameObjects.clear();
-
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
     }
