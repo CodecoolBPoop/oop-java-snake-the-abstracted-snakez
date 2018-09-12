@@ -35,6 +35,7 @@ public class Game extends Pane{
 
         new HeartPowerUp(this);
         new SlowDownPowerUp(this);
+        new SpeedPowerUp(this);
     }
 
 
