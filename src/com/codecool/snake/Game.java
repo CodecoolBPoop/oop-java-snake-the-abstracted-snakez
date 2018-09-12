@@ -1,10 +1,12 @@
 package com.codecool.snake;
 
+import com.codecool.snake.displayitems.Hud;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.SimplePowerup;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import jdk.nashorn.internal.objects.Global;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -28,6 +30,7 @@ public class Game extends Pane{
         new SimplePowerup(this);
         new SimplePowerup(this);
         new SimplePowerup(this);
+        getChildren().add(Globals.hud);
     }
 
     public void start() {
