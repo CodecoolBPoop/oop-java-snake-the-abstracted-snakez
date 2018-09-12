@@ -13,6 +13,7 @@ public class MenuBar {
 
     private static final double WINDOW_WIDTH = 1366;
     private static final double WINDOW_HEIGHT = 768;
+    public static Server server;
 
 
     public static void addMenu(Game game, Stage primaryStage) {
@@ -30,10 +31,12 @@ public class MenuBar {
         newMenuItem.setOnAction(e ->
         {
             primaryStage.close();
+            Globals.gameLoop.stop();
             Globals.gameObjects.clear();
             Globals.newGameObjects.clear();
             Globals.oldGameObjects.clear();
-            new Server();
+            server = new Server();
+            server.startServer();
 
         });
 
@@ -41,7 +44,6 @@ public class MenuBar {
 
         menuBar.getMenus().addAll(fileMenu);
 
-        primaryStage.setTitle("Klondike Solitaire");
         primaryStage.setScene(scene);
         primaryStage.show();
 

@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -27,9 +28,14 @@ public class Server {
 
     private boolean accepted = false;
     private boolean waitingForClient = true;
+    private boolean connected;
 
 
     public Server(){
+
+    }
+
+    public void startServer(){
         System.out.println("Please input the IP: ");
         ip = scanner.nextLine();
         System.out.println("Please input the port: ");
@@ -41,10 +47,14 @@ public class Server {
         if (!connect()){
             initializeServer();
             start();
+            connected = true;
+
         }
         if(accepted){
             start();
+            connected = true;
         }
+
     }
 
     public void start() {
@@ -64,7 +74,7 @@ public class Server {
         Socket socket = null;
         try{
             socket = serverSocket.accept();
-            SnakeHead.dos = new DataOutputStream(socket.getOutputStream());
+            dos = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
             accepted = true;
             System.out.println("Client has requested and joined the game");
@@ -97,4 +107,17 @@ public class Server {
         }
     }
 
+    public boolean getConnected(){
+        return this.connected;
+    }
+
+    public void sendData(SnakeHead snakeHead) {
+        try {
+            dos.writeInt(snakeHead.getHealth());
+            System.out.println(snakeHead.getHealth());
+            dos.flush();
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }

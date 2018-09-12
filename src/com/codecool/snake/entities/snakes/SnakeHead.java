@@ -1,5 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
+import com.codecool.snake.MenuBar;
+import com.codecool.snake.Server;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
@@ -19,7 +21,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     private int maxHealth;
-    private boolean connected;
+    public static boolean connected;
     public static DataOutputStream dos;
 
     public SnakeHead(Pane pane, int xc, int yc) {
@@ -28,16 +30,6 @@ public class SnakeHead extends GameEntity implements Animatable {
         setY(yc);
         health = 100;
         maxHealth = 150;
-        if(this.connected) {
-            while (connected) {
-                try {
-                    dos.writeInt(health);
-                    dos.flush();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
-            }
-        }
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
@@ -67,6 +59,10 @@ public class SnakeHead extends GameEntity implements Animatable {
                 if (entity instanceof Interactable) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
+                    connected = MenuBar.server.getConnected();
+                    if(connected){
+                        MenuBar.server.sendData(this);
+                    }
                     System.out.println(interactable.getMessage());
                 }
             }
