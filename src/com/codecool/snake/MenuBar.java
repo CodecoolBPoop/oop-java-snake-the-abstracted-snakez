@@ -18,7 +18,6 @@ public class MenuBar {
 
 
     public static void addMenu(Game game, Stage primaryStage) {
-        Text t = TextBuilder.create().text("This is a text sample").build();
         BorderPane root = new BorderPane(game);
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.setRoot(root);
