@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 
 public class MenuBar {
 
-    private static final double WINDOW_WIDTH = 1366;
-    private static final double WINDOW_HEIGHT = 768;
+    private static final double WINDOW_WIDTH = Globals.WINDOW_WIDTH;
+    private static final double WINDOW_HEIGHT = Globals.WINDOW_HEIGHT;
 
 
     public static void addMenu(Game game, Stage primaryStage) {
