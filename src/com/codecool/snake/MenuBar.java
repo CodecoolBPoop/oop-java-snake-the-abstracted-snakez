@@ -29,7 +29,11 @@ public class MenuBar {
         exitMenuItem.setOnAction(ActionEvent -> Platform.exit());
         newMenuItem.setOnAction(e ->
         {
-            primaryStage.hide();
+            primaryStage.close();
+            Globals.gameObjects.clear();
+            Globals.newGameObjects.clear();
+            Globals.oldGameObjects.clear();
+            new Server();
 
         });
 

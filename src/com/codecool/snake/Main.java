@@ -10,14 +10,25 @@ public class Main extends Application {
         launch(args);
     }
 
-    @Override
     public void start(Stage primaryStage) {
+        Server.primaryStage = primaryStage;
         Game game = new Game();
+        MenuBar.addMenu(game, primaryStage);
+
+        primaryStage.setTitle("Snake Game");
+        primaryStage.show();
+        game.start();
+    }
+
+    public void startMulti(Stage primaryStage){
+        Game game = new Game();
+        MenuBar.addMenu(game, primaryStage);
 
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(new Scene(game, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT));
         primaryStage.show();
         game.start();
+
     }
 
 }
