@@ -13,10 +13,9 @@ public class Confucia extends GameEntity implements Animatable {
 
         setImage(Globals.confucia);
         pane.getChildren().add(this);
-        setX(950);
-        setY(450);
+        setX(900);
+        setY(400);
         Globals.IS_CONFUCIA_HERE = true;
-
     }
 
     @Override

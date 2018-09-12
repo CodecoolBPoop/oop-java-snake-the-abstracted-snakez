@@ -11,13 +11,11 @@ import javafx.stage.Stage;
 
 public class MenuBar {
 
-    private static final double WINDOW_WIDTH = 1366;
-    private static final double WINDOW_HEIGHT = 768;
 
 
     public static void addMenu(Game game, Stage primaryStage) {
         BorderPane root = new BorderPane(game);
-        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
+        Scene scene = new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
         scene.setRoot(root);
         javafx.scene.control.MenuBar menuBar = new javafx.scene.control.MenuBar();
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());
