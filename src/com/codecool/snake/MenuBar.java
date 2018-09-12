@@ -7,6 +7,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBuilder;
 import javafx.stage.Stage;
 
 public class MenuBar {
@@ -30,6 +32,7 @@ public class MenuBar {
         newMenuItem.setOnAction(e ->
         {
             primaryStage.hide();
+            new Server();
 
         });
 
@@ -37,7 +40,6 @@ public class MenuBar {
 
         menuBar.getMenus().addAll(fileMenu);
 
-        primaryStage.setTitle("Klondike Solitaire");
         primaryStage.setScene(scene);
         primaryStage.show();
 
