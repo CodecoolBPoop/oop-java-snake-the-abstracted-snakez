@@ -55,6 +55,16 @@ public class Server {
             connected = true;
         }
 
+        /*while(true){
+            try{
+                int enemyHealth = dis.readInt();
+                System.out.println(enemyHealth);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+    }*/
+
     }
 
     public void start() {

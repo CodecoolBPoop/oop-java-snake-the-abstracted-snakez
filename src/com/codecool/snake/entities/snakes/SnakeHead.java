@@ -21,7 +21,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     private GameEntity tail; // the last element. Needed to know where to add the next part.
     private int health;
     private int maxHealth;
-    public static boolean connected;
+    private static boolean connected;
     public static DataOutputStream dos;
 
     public SnakeHead(Pane pane, int xc, int yc) {
@@ -59,7 +59,9 @@ public class SnakeHead extends GameEntity implements Animatable {
                 if (entity instanceof Interactable) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
-                    connected = MenuBar.server.getConnected();
+                    if (MenuBar.server != null) {
+                        connected = MenuBar.server.getConnected();
+                    }
                     if(connected){
                         MenuBar.server.sendData(this);
                     }
