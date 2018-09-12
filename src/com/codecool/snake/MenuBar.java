@@ -21,7 +21,6 @@ public class MenuBar {
     public static void addMenu(Game game, Stage primaryStage) {
         Text myLife = new Text("My Life: " );
         BorderPane root = new BorderPane(game);
-        Scene scene = new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
         root.setLeft(myLife);
 
         Scene scene = new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
