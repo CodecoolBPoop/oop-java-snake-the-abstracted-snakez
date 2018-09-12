@@ -17,20 +17,35 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     private Point2D heading;
     private static final int damage = 10;
 
-    public SimpleEnemy(Pane pane) {
+    public SimpleEnemy(Pane pane, double snakeX, double snakeY) {
         super(pane);
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
         int speed = 1;
         Random rnd = new Random();
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setX(possiblePlace(snakeX, rnd, Globals.WINDOW_WIDTH));
+        setY(possiblePlace(snakeY, rnd, Globals.WINDOW_HEIGHT));
 
         double direction = rnd.nextDouble() * 360;
         setRotate(direction);
         heading = Utils.directionToVector(direction, speed);
     }
+
+    private double possiblePlace(double snakeCoord, Random rnd, double windowDimension) {
+        boolean isCoordOk = false;
+        double randomDouble = snakeCoord;
+        while (!isCoordOk) {
+            randomDouble = rnd.nextDouble() * windowDimension;
+            if (randomDouble < snakeCoord+Globals.SPAWN_DISTANCE_FROM_HERO &&
+                    randomDouble > snakeCoord-Globals.SPAWN_DISTANCE_FROM_HERO) {
+                continue;
+            }
+            isCoordOk = true;
+        }
+        return randomDouble;
+    }
+
 
     @Override
     public void step() {
@@ -50,5 +65,14 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
     @Override
     public String getMessage() {
         return "10 damage";
+    }
+
+    @Override
+    public void destroy() {
+        if (getParent() != null) {
+            pane.getChildren().remove(this);
+        }
+        Globals.removeGameObject(this);
+       new SimpleEnemy(pane, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
     }
 }
