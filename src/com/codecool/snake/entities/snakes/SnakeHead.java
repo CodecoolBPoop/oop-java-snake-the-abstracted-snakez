@@ -19,7 +19,6 @@ public class SnakeHead extends GameEntity implements Animatable {
         super(pane);
 
 
-        Globals.hud.health(health);
 
         setX(xc);
         setY(yc);
