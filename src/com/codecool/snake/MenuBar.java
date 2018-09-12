@@ -7,6 +7,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBuilder;
 import javafx.stage.Stage;
 
 public class MenuBar {
@@ -16,6 +18,7 @@ public class MenuBar {
 
 
     public static void addMenu(Game game, Stage primaryStage) {
+        Text t = TextBuilder.create().text("This is a text sample").build();
         BorderPane root = new BorderPane(game);
         Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.setRoot(root);
