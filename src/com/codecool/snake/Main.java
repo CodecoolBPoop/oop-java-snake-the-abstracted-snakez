@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.displayitems.Hud;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,7 +15,6 @@ public class Main extends Application {
         Server.primaryStage = primaryStage;
         Game game = new Game();
         MenuBar.addMenu(game, primaryStage);
-
         primaryStage.setTitle("Snake Game");
         primaryStage.show();
         game.start();
@@ -30,5 +30,4 @@ public class Main extends Application {
         game.start();
 
     }
-
 }
