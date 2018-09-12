@@ -11,6 +11,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
+import java.awt.*;
 import java.util.Random;
 
 public class GameLoop extends AnimationTimer {
@@ -34,14 +35,22 @@ public class GameLoop extends AnimationTimer {
     // This gets called every 1/60 seconds
     @Override
     public void handle(long now) {
-        framecounter +=1;
-        if (framecounter%berrySpawnRate ==0) { new SimplePowerUp(game);}
-        if (framecounter%heartSpawnRate ==0) { new HeartPowerUp(game);}
-        if (framecounter%speedSpawnRate ==0) { new SpeedPowerUp(game);}
-        if (framecounter%slowDownSpawnRate ==0) { new SlowDownPowerUp(game);}
+        framecounter += 1;
+        if (framecounter % berrySpawnRate == 0) {
+            new SimplePowerUp(game);
+        }
+        if (framecounter % heartSpawnRate == 0) {
+            new HeartPowerUp(game);
+        }
+        if (framecounter % speedSpawnRate == 0) {
+            new SpeedPowerUp(game);
+        }
+        if (framecounter % slowDownSpawnRate == 0) {
+            new SlowDownPowerUp(game);
+        }
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
-                Animatable animObject = (Animatable)gameObject;
+                Animatable animObject = (Animatable) gameObject;
                 animObject.step();
             }
         }
@@ -49,5 +58,8 @@ public class GameLoop extends AnimationTimer {
         Globals.newGameObjects.clear();
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
+        if (MenuBar.server != null) {
+            Globals.enemyHud.health(MenuBar.server.getEnemyHealth());
+        }
     }
 }
