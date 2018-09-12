@@ -1,8 +1,8 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
-import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Pane;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -17,6 +17,8 @@ public class Globals {
 
     public static double SNAKE_HEAD_X = 500;
     public static double SNAKE_HEAD_Y = 500;
+    public static Pane PANE;
+    public static boolean IS_CONFUCIA_HERE;
 
 
 

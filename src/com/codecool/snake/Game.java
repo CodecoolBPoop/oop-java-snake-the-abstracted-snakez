@@ -16,11 +16,10 @@ public class Game extends Pane{
     public Game() {
         new SnakeHead(this, 500, 500);
 
-//        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
-//        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
-//        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
-//        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
-        new Confucia(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new SimpleEnemy(this, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
 
         new SimplePowerUp(this);
         new SimplePowerUp(this);
@@ -43,12 +42,13 @@ public class Game extends Pane{
             }
         });
 
-        scene.setOnKeyReleased(event -> {
+        scene.setOnKeyReleased(event -> {;
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = false; break;
                 case RIGHT: Globals.rightKeyDown  = false; break;
             }
         });
+        Globals.PANE = this;
         Globals.gameLoop = new GameLoop(this);
         Globals.gameLoop.start();
     }
