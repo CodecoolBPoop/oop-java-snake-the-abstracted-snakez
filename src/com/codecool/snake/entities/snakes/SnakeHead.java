@@ -76,7 +76,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                     interactable.apply(this);
                     designSnake();
                     if (MenuBar.server != null) {
-                        connected = MenuBar.server.getConnected();
+                        connected = true;
                     }
                     if(connected){
                         MenuBar.server.sendHealth(this);
@@ -88,28 +88,23 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
 
         // check for game over condition
-        if(MenuBar.server == null){
-            if (isOutOfBounds() || health <= 0) {
-                System.out.println("Game Over");
-
-                Globals.gameLoop.stop();
-
-                Globals.popup.gameOverWindow();
+        if (isOutOfBounds() || health <= 0) {
+            this.health = 0;
+            System.out.println("Game Over");
+            if (MenuBar.server != null) {
+                MenuBar.server.sendHealth(this);
+                System.out.println("You lost");
             }
+            Globals.gameLoop.stop();
+            Globals.popup.gameOverWindow();
         }
+
 
         if (connected && MenuBar.server.getEnemyHealth() <= 0){
             Globals.gameLoop.stop();
             System.out.println("You win!");
         }
 
-        if(connected){
-            if(isOutOfBounds() || health <= 0){
-                MenuBar.server.sendHealth(this);
-                Globals.gameLoop.stop();
-                System.out.println("You lost");
-            }
-        }
     }
 
     public void addPart(int numParts) {

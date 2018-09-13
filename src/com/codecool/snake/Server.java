@@ -126,6 +126,18 @@ public class Server {
         }
     }
 
+    public void send100(int num){
+        try {
+            dos.writeInt(num);
+            dos2.write(0);
+            System.out.println(num);
+            dos.flush();
+            dos2.flush();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public void sendScore(SnakeHead snakeHead) {
         try {
             dos2.writeInt(Globals.getScore());
@@ -164,4 +176,9 @@ public class Server {
         }
         return enemyScore;
     }
+
+    public void setEnemyHealth(int enemyHealth) {
+        this.enemyHealth = enemyHealth;
+    }
+
 }
