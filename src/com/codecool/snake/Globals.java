@@ -3,7 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.displayitems.Hud;
 import com.codecool.snake.entities.GameEntity;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Globals {
 
     public static final double WINDOW_WIDTH = 1200;
-    public static final double WINDOW_HEIGHT = 900;
+    public static final double WINDOW_HEIGHT = 700;
 
 
     public static double SNAKE_HEAD_X = 500;
@@ -34,6 +34,7 @@ public class Globals {
     public static Image powerupInjection = new Image("powerup_injection.png");
     public static Image powerupPillBox = new Image("powerup_pillbox.png");
     public static Image backgroundImage = new Image("background1.jpg");
+    public static Image scoreBackground = new Image("score_bg.jpg");
 
     //Snake Sprites
     public static Image snakeHead1 = new Image("snake_head1.png");
