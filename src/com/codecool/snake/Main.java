@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.displayitems.GamoverPopup;
 import com.codecool.snake.displayitems.Hud;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,7 +11,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
+    @Override
     public void start(Stage primaryStage) {
         Server.primaryStage = primaryStage;
         Game game = new Game();
@@ -30,4 +31,5 @@ public class Main extends Application {
         game.start();
 
     }
+
 }

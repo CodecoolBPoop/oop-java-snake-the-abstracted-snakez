@@ -41,9 +41,10 @@ public class Globals {
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
     public static Hud hud = new Hud();
+    public static GamoverPopup popup = new GamoverPopup();
     public static int score = 0; //moc should be returned with a method
     public static Stage primaryStage;
-    public static GamoverPopup popup;
+
 
     static {
         gameObjects = new LinkedList<>();
