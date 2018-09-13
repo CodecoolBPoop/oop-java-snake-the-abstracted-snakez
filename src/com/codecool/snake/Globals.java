@@ -12,8 +12,8 @@ import java.util.List;
 // class for holding all static stuff
 public class Globals {
 
-    public static final double WINDOW_WIDTH = 1600 ;
-    public static final double WINDOW_HEIGHT = 1100;
+    public static final double WINDOW_WIDTH = 1200;
+    public static final double WINDOW_HEIGHT = 900;
 
 
     public static double SNAKE_HEAD_X = 500;

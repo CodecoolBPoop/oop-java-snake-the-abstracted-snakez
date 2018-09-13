@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 
 public class MenuBar {
 
-    private static final double WINDOW_WIDTH = 1600;
-    private static final double WINDOW_HEIGHT = 1100;
+    private static final double WINDOW_WIDTH = Globals.WINDOW_WIDTH;
+    private static final double WINDOW_HEIGHT = Globals.WINDOW_HEIGHT;
     public static Server server;
 
 
@@ -22,8 +22,8 @@ public class MenuBar {
         BorderPane root = new BorderPane(game);
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
         Background background = new Background(new BackgroundImage(Globals.backgroundImage,
-                BackgroundRepeat.REPEAT,
-                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.ROUND,
+                BackgroundRepeat.ROUND,
                 BackgroundPosition.CENTER,
                 bSize));
         root.setBackground(background);
