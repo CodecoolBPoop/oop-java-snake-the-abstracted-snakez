@@ -44,6 +44,7 @@ public class MenuBar {
             Globals.oldGameObjects.clear();
             Globals.newGameObjects.clear();
             Globals.gameObjects.clear();
+            Globals.setScore(0);
             server = new Server();
             server.startServer();
 

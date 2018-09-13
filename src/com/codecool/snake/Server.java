@@ -29,8 +29,8 @@ public class Server {
     private boolean accepted = false;
     private boolean waitingForClient = true;
     private boolean connected;
-    private int enemyHealth;
-    private int enemyScore;
+    private int enemyHealth = 100;
+    private int enemyScore = 0;
 
 
     public Server() {
@@ -122,6 +122,18 @@ public class Server {
             System.out.println(snakeHead.getHealth());
             dos.flush();
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void send100(int num){
+        try {
+            dos.writeInt(num);
+            dos2.write(0);
+            System.out.println(num);
+            dos.flush();
+            dos2.flush();
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

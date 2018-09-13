@@ -19,9 +19,10 @@ import javafx.event.ActionEvent;
 public class GamoverPopup {
   public static Stage primaryStage;
 
-  public void gameOverWindow() {
+  public void gameOverWindow(String string) {
     VBox popUp = new VBox();
     popUp.setAlignment(Pos.CENTER);
+    popUp.getChildren().add(new Label(string));
     popUp.getChildren().add(new Label("Your score: " + Globals.score));
 
     Button exitGame = new Button("Exit Game");

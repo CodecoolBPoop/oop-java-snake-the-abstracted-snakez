@@ -92,4 +92,8 @@ public class Globals {
     public static int getScore(){
         return score;
     }
+
+    public static void setScore(int score) {
+        Globals.score = score;
+    }
 }
