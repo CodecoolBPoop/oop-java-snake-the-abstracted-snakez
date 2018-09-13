@@ -22,7 +22,7 @@ public class SimpleEnemy extends GameEntity implements Animatable, Interactable 
 
         setImage(Globals.simpleEnemy);
         pane.getChildren().add(this);
-        int speed = 1;
+        int speed = 2;
         Random rnd = new Random();
         setX(possiblePlace(snakeX, rnd, Globals.WINDOW_WIDTH));
         setY(possiblePlace(snakeY, rnd, Globals.WINDOW_HEIGHT));
