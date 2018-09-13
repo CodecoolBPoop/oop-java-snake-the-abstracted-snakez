@@ -78,7 +78,8 @@ public class SnakeHead extends GameEntity implements Animatable {
                         connected = MenuBar.server.getConnected();
                     }
                     if(connected){
-                        MenuBar.server.sendData(this);
+                        MenuBar.server.sendHealth(this);
+                        MenuBar.server.sendScore(this);
                     }
                     System.out.println(interactable.getMessage());
                 }

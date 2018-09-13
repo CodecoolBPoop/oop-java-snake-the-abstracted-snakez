@@ -3,21 +3,21 @@ package com.codecool.snake;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.objects.Global;
 
 public class MenuBar {
 
-    private static final double WINDOW_WIDTH = 1366;
-    private static final double WINDOW_HEIGHT = 768;
+    private static final double WINDOW_WIDTH = 1600;
+    private static final double WINDOW_HEIGHT = 1100;
     public static Server server;
     private static Image image = new Image("background.png");
+
 
 
     public static void addMenu(Game game, Stage primaryStage) {
@@ -43,9 +43,9 @@ public class MenuBar {
         {
             primaryStage.close();
             Globals.gameLoop.stop();
-            Globals.gameObjects.clear();
-            Globals.newGameObjects.clear();
             Globals.oldGameObjects.clear();
+            Globals.newGameObjects.clear();
+            Globals.gameObjects.clear();
             server = new Server();
             server.startServer();
 

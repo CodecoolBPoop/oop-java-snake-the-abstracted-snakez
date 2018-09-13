@@ -12,8 +12,8 @@ import java.util.List;
 // class for holding all static stuff
 public class Globals {
 
-    public static final double WINDOW_WIDTH = 1366 ;
-    public static final double WINDOW_HEIGHT = 768;
+    public static final double WINDOW_WIDTH = 1600 ;
+    public static final double WINDOW_HEIGHT = 1100;
 
 
     public static double SNAKE_HEAD_X = 500;
@@ -42,8 +42,8 @@ public class Globals {
     public static List<GameEntity> newGameObjects; // Holds game objects crated in this frame.
     public static List<GameEntity> oldGameObjects; // Holds game objects that will be destroyed this frame.
     public static GameLoop gameLoop;
-    public static Hud myHud = new Hud();
-    public static Hud enemyHud = new Hud();
+    public static Hud myHud = new Hud("YOUR");
+    public static Hud enemyHud = new Hud("ENEMIES");
     public static int score = 0; //moc should be returned with a method
 
     static {
@@ -62,5 +62,9 @@ public class Globals {
 
     public static List<GameEntity> getGameObjects() {
         return Collections.unmodifiableList(gameObjects);
+    }
+
+    public static int getScore(){
+        return score;
     }
 }

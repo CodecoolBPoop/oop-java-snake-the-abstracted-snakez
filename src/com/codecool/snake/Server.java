@@ -1,9 +1,6 @@
 package com.codecool.snake;
 
-import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -22,6 +19,8 @@ public class Server {
     private Socket socket;
     private DataOutputStream dos;
     private DataInputStream dis;
+    private DataOutputStream dos2;
+    private DataInputStream dis2;
 
     private ServerSocket serverSocket;
 
@@ -31,6 +30,7 @@ public class Server {
     private boolean waitingForClient = true;
     private boolean connected;
     private int enemyHealth;
+    private int enemyScore;
 
 
     public Server() {
@@ -76,7 +76,9 @@ public class Server {
         try {
             socket = serverSocket.accept();
             dos = new DataOutputStream(socket.getOutputStream());
+            dos2 = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
+            dis2 = new DataInputStream(socket.getInputStream());
             accepted = true;
             System.out.println("Client has requested and joined the game");
             return true;
@@ -90,7 +92,9 @@ public class Server {
         try {
             socket = new Socket(ip, port);
             dos = new DataOutputStream(socket.getOutputStream());
+            dos2 = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
+            dis2 = new DataInputStream(socket.getInputStream());
             accepted = true;
         } catch (IOException e) {
             System.out.println("Unable to connect to the address: " + ip + ":" + port + " | Starting a server");
@@ -112,11 +116,21 @@ public class Server {
         return this.connected;
     }
 
-    public void sendData(SnakeHead snakeHead) {
+    public void sendHealth(SnakeHead snakeHead) {
         try {
             dos.writeInt(snakeHead.getHealth());
             System.out.println(snakeHead.getHealth());
             dos.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void sendScore(SnakeHead snakeHead) {
+        try {
+            dos2.writeInt(Globals.getScore());
+            System.out.println(snakeHead.getHealth());
+            dos2.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -135,5 +149,19 @@ public class Server {
             e.printStackTrace();
         }
         return enemyHealth;
+    }
+    public int getEnemyScore() {
+        try{if (dis2.available() != 0) {
+            try {
+                enemyScore = dis2.readInt();
+                return enemyScore;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }}catch (IOException e){
+            e.printStackTrace();
+        }
+        return enemyScore;
     }
 }
