@@ -32,7 +32,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         setY(yc);
         health = 100;
         maxHealth = 150;
-        Globals.hud.health(health);
+        Globals.myHud.health(health);
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
@@ -43,12 +43,23 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void step() {
         double dir = getRotate();
-        if (Globals.leftKeyDown) {
-            dir = dir - turnRate;
-        }
-        if (Globals.rightKeyDown) {
-            dir = dir + turnRate;
-        }
+        if (Globals.IS_CONFUCIA_HERE) {
+            if (Globals.leftKeyDown) {
+                dir = dir + turnRate;
+            }
+            if (Globals.rightKeyDown) {
+                dir = dir - turnRate;
+            }
+        } else {
+
+                if (Globals.leftKeyDown) {
+                    dir = dir - turnRate;
+                }
+                if (Globals.rightKeyDown) {
+                    dir = dir + turnRate;
+                }
+            }
+
         // set rotation and position
         setRotate(dir);
         Point2D heading = Utils.directionToVector(dir, speed);
@@ -67,7 +78,8 @@ public class SnakeHead extends GameEntity implements Animatable {
                         connected = MenuBar.server.getConnected();
                     }
                     if(connected){
-                        MenuBar.server.sendData(this);
+                        MenuBar.server.sendHealth(this);
+                        MenuBar.server.sendScore(this);
                     }
                     System.out.println(interactable.getMessage());
                 }
@@ -91,13 +103,13 @@ public class SnakeHead extends GameEntity implements Animatable {
         }
         Globals.score += numParts;
         System.out.println(Globals.score);
-        Globals.hud.score(Globals.score);
+        Globals.myHud.score(Globals.score);
     }
 
     public void changeHealth(int diff) {
         health += diff;
         System.out.println("Healt is " + health);;
-        Globals.hud.health(health);
+        Globals.myHud.health(health);
     }
 
     public void changeSpeed(float diff) {
