@@ -59,6 +59,8 @@ public class Mouth extends GameEntity implements Animatable, Interactable {
     @Override
     public void apply(SnakeHead player) {
         player.resetTo4();
+        Globals.setScore(4);
+        Globals.myHud.score(4);
         destroy();
     }
 
