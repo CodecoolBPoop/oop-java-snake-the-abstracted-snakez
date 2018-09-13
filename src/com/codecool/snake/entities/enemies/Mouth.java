@@ -11,13 +11,12 @@ import javafx.scene.layout.Pane;
 
 import java.util.Random;
 
-// a simple enemy TODO make better ones.
-public class Sor extends GameEntity implements Animatable, Interactable {
+public class Mouth extends GameEntity implements Animatable, Interactable {
 
     private Point2D heading;
     private static final int damage = 10;
 
-    public Sor(Pane pane, double snakeX, double snakeY) {
+    public Mouth(Pane pane, double snakeX, double snakeY) {
         super(pane);
 
         setImage(Globals.sorImage);
@@ -74,6 +73,6 @@ public class Sor extends GameEntity implements Animatable, Interactable {
             pane.getChildren().remove(this);
         }
         Globals.removeGameObject(this);
-        new Sor(pane, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
+        new Mouth(pane, Globals.SNAKE_HEAD_X, Globals.SNAKE_HEAD_Y);
     }
 }
