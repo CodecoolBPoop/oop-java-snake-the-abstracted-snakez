@@ -96,13 +96,13 @@ public class SnakeHead extends GameEntity implements Animatable {
                 System.out.println("You lost");
             }
             Globals.gameLoop.stop();
-            Globals.popup.gameOverWindow();
+            Globals.popup.gameOverWindow("You lost!");
         }
 
 
         if (connected && MenuBar.server.getEnemyHealth() <= 0){
             Globals.gameLoop.stop();
-            System.out.println("You win!");
+            Globals.popup.gameOverWindow("You win!");
         }
 
     }

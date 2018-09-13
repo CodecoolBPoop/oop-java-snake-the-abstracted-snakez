@@ -47,9 +47,7 @@ public class MenuBar {
             Globals.setScore(0);
             server = new Server();
             server.startServer();
-            server.send100(100);
-            Globals.enemyHud.health(MenuBar.server.getEnemyHealth());
-            Globals.enemyHud.score(MenuBar.server.getEnemyScore());
+
         });
 
         fileMenu.getItems().addAll(newMenuItem, new SeparatorMenuItem(), exitMenuItem);

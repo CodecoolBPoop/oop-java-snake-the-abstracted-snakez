@@ -29,8 +29,8 @@ public class Server {
     private boolean accepted = false;
     private boolean waitingForClient = true;
     private boolean connected;
-    private int enemyHealth;
-    private int enemyScore;
+    private int enemyHealth = 100;
+    private int enemyScore = 0;
 
 
     public Server() {
@@ -176,9 +176,4 @@ public class Server {
         }
         return enemyScore;
     }
-
-    public void setEnemyHealth(int enemyHealth) {
-        this.enemyHealth = enemyHealth;
-    }
-
 }
