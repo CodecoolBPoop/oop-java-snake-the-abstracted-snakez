@@ -132,4 +132,7 @@ public class SnakeHead extends GameEntity implements Animatable {
     public int getHealth() {
         return health;
     }
+
+    private void designSnake(){}
+
 }
