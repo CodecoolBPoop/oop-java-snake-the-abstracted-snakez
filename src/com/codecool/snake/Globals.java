@@ -37,6 +37,8 @@ public class Globals {
     public static Image powerupHeart = new Image("powerup_heart.png");
     public static Image powerupInjection = new Image("powerup_injection.png");
     public static Image powerupPillBox = new Image("powerup_pillbox.png");
+    public static Image sorImage = new Image("mouth.png");
+
     public static Image backgroundImage = new Image("background1.jpg");
     public static Image scoreBackground = new Image("score_bg.jpg");
 
