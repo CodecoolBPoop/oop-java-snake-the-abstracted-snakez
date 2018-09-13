@@ -67,6 +67,8 @@ public class GameLoop extends AnimationTimer {
         Globals.newGameObjects.clear();
         Globals.gameObjects.removeAll(Globals.oldGameObjects);
         Globals.oldGameObjects.clear();
+        if (MenuBar.server != null) {
+            Globals.enemyHud.health(MenuBar.server.getEnemyHealth());
+        }
     }
-
 }

@@ -7,23 +7,29 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import jdk.nashorn.internal.objects.Global;
 
 public class MenuBar {
 
+    private static final double WINDOW_WIDTH = 1366;
+    private static final double WINDOW_HEIGHT = 768;
     public static Server server;
+    private static Image image = new Image("background.png");
 
 
     public static void addMenu(Game game, Stage primaryStage) {
-        Text myLife = new Text("My Life: " );
         BorderPane root = new BorderPane(game);
-        root.setLeft(myLife);
-
-        Scene scene = new Scene(root, Globals.WINDOW_WIDTH, Globals.WINDOW_HEIGHT);
+        BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
+        Background background = new Background(new BackgroundImage(image,
+                BackgroundRepeat.REPEAT,
+                BackgroundRepeat.REPEAT,
+                BackgroundPosition.CENTER,
+                bSize));
+        root.setBackground(background);
+        Scene scene = new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT);
         scene.setRoot(root);
         javafx.scene.control.MenuBar menuBar = new javafx.scene.control.MenuBar();
         menuBar.prefWidthProperty().bind(primaryStage.widthProperty());

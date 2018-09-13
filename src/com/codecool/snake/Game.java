@@ -9,6 +9,7 @@ import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SlowDownPowerUp;
 import com.codecool.snake.entities.powerups.SpeedPowerUp;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import jdk.nashorn.internal.objects.Global;
@@ -31,7 +32,9 @@ public class Game extends Pane{
         new HeartPowerUp(this);
         new SlowDownPowerUp(this);
         new SpeedPowerUp(this);
-        getChildren().add(Globals.hud);
+        getChildren().add(Globals.myHud);
+        getChildren().add(Globals.enemyHud);
+        Globals.enemyHud.setAlignment(Pos.CENTER_RIGHT);
     }
 
 

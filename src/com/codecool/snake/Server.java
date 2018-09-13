@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.DataInputStream;
@@ -29,42 +30,32 @@ public class Server {
     private boolean accepted = false;
     private boolean waitingForClient = true;
     private boolean connected;
+    private int enemyHealth;
 
 
-    public Server(){
+    public Server() {
 
     }
 
-    public void startServer(){
+    public void startServer() {
         System.out.println("Please input the IP: ");
         ip = scanner.nextLine();
         System.out.println("Please input the port: ");
         port = scanner.nextInt();
-        while(port < 1 || port > 65535){
+        while (port < 1 || port > 65535) {
             System.out.println("The port you entered was invalid!");
             port = scanner.nextInt();
         }
-        if (!connect()){
+        if (!connect()) {
             initializeServer();
             start();
             connected = true;
 
         }
-        if(accepted){
+        if (accepted) {
             start();
             connected = true;
         }
-
-        /*while(true){
-            try{
-                int enemyHealth = dis.readInt();
-                System.out.println(enemyHealth);
-            }catch(IOException e){
-                e.printStackTrace();
-            }
-
-    }*/
-
     }
 
     public void start() {
@@ -75,27 +66,27 @@ public class Server {
             primaryStage.setTitle("Snake Multiplayer");
             primaryStage.show();
             game.start();
-        }else{
+        } else {
             listenForServerRequest();
         }
     }
 
-    private boolean listenForServerRequest(){
+    private boolean listenForServerRequest() {
         Socket socket = null;
-        try{
+        try {
             socket = serverSocket.accept();
             dos = new DataOutputStream(socket.getOutputStream());
             dis = new DataInputStream(socket.getInputStream());
             accepted = true;
             System.out.println("Client has requested and joined the game");
             return true;
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    private boolean connect(){
+    private boolean connect() {
         try {
             socket = new Socket(ip, port);
             dos = new DataOutputStream(socket.getOutputStream());
@@ -117,7 +108,7 @@ public class Server {
         }
     }
 
-    public boolean getConnected(){
+    public boolean getConnected() {
         return this.connected;
     }
 
@@ -126,8 +117,23 @@ public class Server {
             dos.writeInt(snakeHead.getHealth());
             System.out.println(snakeHead.getHealth());
             dos.flush();
-        }catch(IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getEnemyHealth() {
+        try{if (dis.available() != 0) {
+            try {
+                enemyHealth = dis.readInt();
+                return enemyHealth;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }}catch (IOException e){
+            e.printStackTrace();
+        }
+        return enemyHealth;
     }
 }
