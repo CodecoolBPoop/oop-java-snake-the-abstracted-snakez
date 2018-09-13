@@ -50,7 +50,7 @@ public class SnakeHead extends GameEntity implements Animatable {
             if (Globals.rightKeyDown) {
                 dir = dir - turnRate;
             }
-        }else {
+        } else {
 
                 if (Globals.leftKeyDown) {
                     dir = dir - turnRate;

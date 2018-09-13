@@ -11,18 +11,18 @@ public class Confucia extends GameEntity {
 
         setImage(Globals.confucia);
         pane.getChildren().add(this);
-        setX(800);
-        setY(400);
+        setX(Globals.WINDOW_WIDTH-150);
+        setY(Globals.WINDOW_HEIGHT-292);
         Globals.IS_CONFUCIA_HERE = true;
     }
 
     @Override
     public void destroy() {
-        Globals.IS_CONFUCIA_HERE = false;
         if (getParent() != null) {
             pane.getChildren().remove(this);
         }
         Globals.removeGameObject(this);
+        Globals.IS_CONFUCIA_HERE = false;
     }
 }
 
