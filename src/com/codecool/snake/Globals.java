@@ -5,6 +5,7 @@ import com.codecool.snake.entities.GameEntity;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
+import javafx.geometry.Point2D;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Globals {
     public static double SNAKE_HEAD_Y = 500;
     public static Pane PANE;
     public static boolean IS_CONFUCIA_HERE;
+    public static Point2D snakeHeading;
 
 
 
@@ -33,6 +35,8 @@ public class Globals {
     public static Image powerupHeart = new Image("powerup_heart.png");
     public static Image powerupInjection = new Image("powerup_injection.png");
     public static Image powerupPillBox = new Image("powerup_pillbox.png");
+    public static Image sorImage = new Image("sor.png");
+
     //.. put here the other images you want to use
 
     public static boolean leftKeyDown;

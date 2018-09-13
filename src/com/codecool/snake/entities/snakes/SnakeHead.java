@@ -13,6 +13,9 @@ import jdk.nashorn.internal.objects.Global;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class SnakeHead extends GameEntity implements Animatable {
 
@@ -24,6 +27,8 @@ public class SnakeHead extends GameEntity implements Animatable {
     private int maxHealth;
     private static boolean connected;
     public static DataOutputStream dos;
+    private List<SnakeBody> snakeBodies;
+
 
     public SnakeHead(Pane pane, int xc, int yc) {
         super(pane);
@@ -36,6 +41,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         tail = this;
         setImage(Globals.snakeHead);
         pane.getChildren().add(this);
+        snakeBodies = new ArrayList<>();
 
         addPart(4);
 //        Globals.hud.score(Globals.score);
@@ -63,6 +69,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         // set rotation and position
         setRotate(dir);
         Point2D heading = Utils.directionToVector(dir, speed);
+        Globals.snakeHeading = heading;
         Globals.SNAKE_HEAD_X = getX();
         Globals.SNAKE_HEAD_Y = getY();
         setX(getX() + heading.getX());
@@ -96,12 +103,31 @@ public class SnakeHead extends GameEntity implements Animatable {
     public void addPart(int numParts) {
         for (int i = 0; i < numParts; i++) {
             SnakeBody newPart = new SnakeBody(pane, tail);
+            snakeBodies.add(newPart);
             tail = newPart;
         }
         Globals.score += numParts;
         System.out.println(Globals.score);
         Globals.myHud.score(Globals.score);
     }
+
+    private SnakeBody lastBody() {
+        return snakeBodies.get(snakeBodies.size()-1);
+    }
+
+    private void removeParts(int numToRemove) {
+        for (int i = 0; i < numToRemove; i++) {
+            SnakeBody currentLast = lastBody();
+            snakeBodies.remove(currentLast);
+            currentLast.destroy();
+            tail = lastBody();
+        }
+    }
+
+    public void resetTo4() {
+        removeParts(snakeBodies.size()-4);
+    }
+
 
     public void changeHealth(int diff) {
         health += diff;
