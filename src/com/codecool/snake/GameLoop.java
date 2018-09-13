@@ -47,7 +47,7 @@ public class GameLoop extends AnimationTimer {
             new SlowDownPowerUp(game);
         }
 
-        if (rand.nextInt(1000) == 500) {
+        if (rand.nextInt(1000) == 500 && !Globals.IS_CONFUCIA_HERE) {
             confucia = new Confucia(Globals.PANE);
         }
         if (Globals.IS_CONFUCIA_HERE){

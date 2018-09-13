@@ -38,7 +38,7 @@ public class SnakeHead extends GameEntity implements Animatable {
         pane.getChildren().add(this);
 
         addPart(4);
-//        Globals.hud.score(Globals.score);
+//      Globals.hud.score(Globals.score);
     }
 
     public void step() {
@@ -50,7 +50,7 @@ public class SnakeHead extends GameEntity implements Animatable {
             if (Globals.rightKeyDown) {
                 dir = dir - turnRate;
             }
-        }else {
+        } else {
 
                 if (Globals.leftKeyDown) {
                     dir = dir - turnRate;
@@ -90,7 +90,10 @@ public class SnakeHead extends GameEntity implements Animatable {
         // check for game over condition
         if (isOutOfBounds() || health <= 0) {
             System.out.println("Game Over");
+
             Globals.gameLoop.stop();
+
+            Globals.popup.gameOverWindow();
         }
     }
 
