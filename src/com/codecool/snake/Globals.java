@@ -7,6 +7,7 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -15,8 +16,8 @@ import java.util.List;
 // class for holding all static stuff
 public class Globals {
 
-    public static final double WINDOW_WIDTH = 1600 ;
-    public static final double WINDOW_HEIGHT = 1100;
+    public static final double WINDOW_WIDTH = 1200;
+    public static final double WINDOW_HEIGHT = 700;
 
 
     public static double SNAKE_HEAD_X = 500;
@@ -30,12 +31,28 @@ public class Globals {
 
     public static Image snakeHead = new Image("snake_head.png");
     public static Image snakeBody = new Image("snake_body.png");
-    public static Image simpleEnemy = new Image("simple_enemy.png");
+    public static Image simpleEnemy = new Image("bird_enemy.png");
     public static Image confucia  = new Image("confucia2.png");
     public static Image powerupBerry = new Image("powerup_berry.png");
     public static Image powerupHeart = new Image("powerup_heart.png");
     public static Image powerupInjection = new Image("powerup_injection.png");
     public static Image powerupPillBox = new Image("powerup_pillbox.png");
+    public static Image backgroundImage = new Image("background1.jpg");
+    public static Image scoreBackground = new Image("score_bg.jpg");
+
+    //Snake Sprites
+    public static Image snakeHead1 = new Image("snake_head1.png");
+    public static Image snakeHead2 = new Image("snake_head2.png");
+    public static Image snakeHead3 = new Image("snake_head3.png");
+    public static Image snakeHead4 = new Image("snake_head4.png");
+    public static Image snakeHead5 = new Image("snake_head5.png");
+    public static Image snakeHead6 = new Image("snake_head6.png");
+    public static Image snakeBody1 = new Image("snake_body1.png");
+    public static Image snakeBody2 = new Image("snake_body2.png");
+    public static Image snakeBody3 = new Image("snake_body3.png");
+    public static Image snakeBody4 = new Image("snake_body4.png");
+    public static Image snakeBody5 = new Image("snake_body5.png");
+    public static Image snakeBody6 = new Image("snake_body6.png");
     //.. put here the other images you want to use
 
     public static boolean leftKeyDown;
