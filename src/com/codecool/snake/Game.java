@@ -1,5 +1,6 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.Confucia;
 import com.codecool.snake.displayitems.Hud;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.HeartPowerUp;
@@ -27,7 +28,7 @@ public class Game extends Pane{
         new SimplePowerUp(this);
         new SimplePowerUp(this);
         new SimplePowerUp(this);
-      
+
         new HeartPowerUp(this);
         new SlowDownPowerUp(this);
         new SpeedPowerUp(this);
@@ -47,12 +48,13 @@ public class Game extends Pane{
             }
         });
 
-        scene.setOnKeyReleased(event -> {
+        scene.setOnKeyReleased(event -> {;
             switch (event.getCode()) {
                 case LEFT:  Globals.leftKeyDown  = false; break;
                 case RIGHT: Globals.rightKeyDown  = false; break;
             }
         });
+        Globals.PANE = this;
         Globals.gameLoop = new GameLoop(this);
         Globals.gameLoop.start();
     }

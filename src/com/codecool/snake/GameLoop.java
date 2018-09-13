@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
+import com.codecool.snake.entities.enemies.Confucia;
 import com.codecool.snake.entities.powerups.HeartPowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
 import com.codecool.snake.entities.powerups.SimplePowerUp;
@@ -11,23 +12,20 @@ import com.codecool.snake.entities.snakes.SnakeHead;
 import javafx.animation.AnimationTimer;
 import javafx.scene.layout.Pane;
 
-import java.awt.*;
 import java.util.Random;
 
 public class GameLoop extends AnimationTimer {
 
-    public double snakeX;
-    public double snakeY;
-
+    public Confucia confucia;
     long framecounter = 0;
     private Pane game;
     Random rand = new Random();
-    int berrySpawnRate = rand.nextInt(601)+300;
-    int heartSpawnRate = rand.nextInt(601)+300;
-    int speedSpawnRate = rand.nextInt(901)+300;
-    int slowDownSpawnRate = rand.nextInt(901)+600;
+    int berrySpawnRate = rand.nextInt(601) + 300;
+    int heartSpawnRate = rand.nextInt(601) + 300;
+    int speedSpawnRate = rand.nextInt(901) + 300;
+    int slowDownSpawnRate = rand.nextInt(901) + 600;
 
-    GameLoop(Pane pane){
+    GameLoop(Pane pane) {
         super();
         game = pane;
     }
@@ -48,6 +46,17 @@ public class GameLoop extends AnimationTimer {
         if (framecounter % slowDownSpawnRate == 0) {
             new SlowDownPowerUp(game);
         }
+
+        if (rand.nextInt(1000) == 500) {
+            confucia = new Confucia(Globals.PANE);
+        }
+        if (Globals.IS_CONFUCIA_HERE){
+            if (rand.nextInt(500) == 250) {
+                confucia.destroy();
+            }
+
+        }
+
         for (GameEntity gameObject : Globals.gameObjects) {
             if (gameObject instanceof Animatable) {
                 Animatable animObject = (Animatable) gameObject;

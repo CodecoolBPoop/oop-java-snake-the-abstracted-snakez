@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import jdk.nashorn.internal.objects.Global;
 
 public class MenuBar {
 

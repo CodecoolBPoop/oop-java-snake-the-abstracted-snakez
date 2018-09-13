@@ -43,12 +43,23 @@ public class SnakeHead extends GameEntity implements Animatable {
 
     public void step() {
         double dir = getRotate();
-        if (Globals.leftKeyDown) {
-            dir = dir - turnRate;
-        }
-        if (Globals.rightKeyDown) {
-            dir = dir + turnRate;
-        }
+        if (Globals.IS_CONFUCIA_HERE) {
+            if (Globals.leftKeyDown) {
+                dir = dir + turnRate;
+            }
+            if (Globals.rightKeyDown) {
+                dir = dir - turnRate;
+            }
+        }else {
+
+                if (Globals.leftKeyDown) {
+                    dir = dir - turnRate;
+                }
+                if (Globals.rightKeyDown) {
+                    dir = dir + turnRate;
+                }
+            }
+
         // set rotation and position
         setRotate(dir);
         Point2D heading = Utils.directionToVector(dir, speed);
