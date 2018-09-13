@@ -33,7 +33,7 @@ public class Globals {
     public static Image powerupHeart = new Image("powerup_heart.png");
     public static Image powerupInjection = new Image("powerup_injection.png");
     public static Image powerupPillBox = new Image("powerup_pillbox.png");
-    public static Image backgroundImage = new Image("background.png");
+    public static Image backgroundImage = new Image("background1.jpg");
 
     //Snake Sprites
     public static Image snakeHead1 = new Image("snake_head1.png");
