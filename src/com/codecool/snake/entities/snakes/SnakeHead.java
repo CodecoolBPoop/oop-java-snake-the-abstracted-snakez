@@ -74,6 +74,7 @@ public class SnakeHead extends GameEntity implements Animatable {
                 if (entity instanceof Interactable) {
                     Interactable interactable = (Interactable) entity;
                     interactable.apply(this);
+                    designSnake();
                     if (MenuBar.server != null) {
                         connected = MenuBar.server.getConnected();
                     }
@@ -133,6 +134,27 @@ public class SnakeHead extends GameEntity implements Animatable {
         return health;
     }
 
-    private void designSnake(){}
+    private void designSnake() {
+        int score = Globals.getScore();
+        if (score >= 12 & score < 20) {
+            setImage(Globals.snakeHead1);
+            Globals.snakeBody = Globals.snakeBody1;
+        } else if (score >= 20 & score < 28) {
+            setImage(Globals.snakeHead2);
+            Globals.snakeBody = Globals.snakeBody2;
+        } else if (score >= 28 & score < 36) {
+            setImage(Globals.snakeHead3);
+            Globals.snakeBody = Globals.snakeBody3;
+        } else if (score >= 36 & score < 44) {
+            setImage(Globals.snakeHead4);
+            Globals.snakeBody = Globals.snakeBody4;
+        } else if (score >= 44 & score < 52) {
+            setImage(Globals.snakeHead5);
+            Globals.snakeBody = Globals.snakeBody5;
+        } else if (score >= 52) {
+            setImage(Globals.snakeHead6);
+            Globals.snakeBody = Globals.snakeBody6;
+        }
+    }
 
 }
