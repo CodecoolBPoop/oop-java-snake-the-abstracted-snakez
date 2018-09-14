@@ -24,7 +24,6 @@ public class Hud extends FlowPane {
     this.getChildren().add(vbox);
     addHealthBar();
     addScoreBar();
-
   }
 
   public void health(int health) {
@@ -50,4 +49,5 @@ public class Hud extends FlowPane {
     scoreBar = new Label();
     vbox.getChildren().add(scoreBar);
   }
+
 }
